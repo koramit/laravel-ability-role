@@ -52,11 +52,11 @@ class AbilityRoleTableSeeder extends Seeder
 
         $gp_md = Role::whereName('gp_md')->first();
         $gp_md->allowTo('view_any_cases');
-        $gp_md->allowTo('eam_case');
+        $gp_md->allowTo('exam_case');
 
         $er_md = Role::whereName('er_md')->first();
         $er_md->allowTo('view_any_cases');
-        $er_md->allowTo('eam_case');
+        $er_md->allowTo('exam_case');
         $er_md->allowTo('procedure_case');
     }
 }
