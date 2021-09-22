@@ -31,22 +31,30 @@
         @if($card->discharged_at)
         DISCHARGED
         @else
-        <button style="margin-right: 1rem;"><a style="text-decoration: none;" href="{{ url('/triage/' . $card->id) . '/edit' }}">Triage</a></button>
+        @can('triage', $card)
+        <button style="margin-right: 1rem;">
+            <a style="text-decoration: none;" href="{{ url('/triage/' . $card->id) . '/edit' }}">Triage</a>
+        </button>
+        @endcan
         @can('exam', $card)
         <button style="margin-right: 1rem;">
             <a style="text-decoration: none;" href="{{ url('/exam/' . $card->id) . '/edit' }}">Exam</a>
         </button>
         @endcan
+        @can('discharge', $card)
         <form action="{{ url('/discharge/' . $card->id) }}" method="POST" style="display: inline;">
             @csrf
             @method('patch')
             <button type="submit" style="margin-right: 1rem; cursor: pointer;">Discharge</button>
         </form>
+        @endcan
+        @can('cancel', $card)
         <form action="{{ url('/' . $card->id) }}" method="POST" style="display: inline;">
             @csrf
             @method('delete')
             <button type="submit" style="margin-right: 1rem; cursor: pointer;">Cancel</button>
         </form>
+        @endcan
         @endif
     </div>
 </div>

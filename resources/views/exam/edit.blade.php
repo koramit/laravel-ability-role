@@ -25,10 +25,12 @@
         <textarea id="oders" name="oders"></textarea>
     </div>
 
+    @can('procedure', $opdcard)
     <div class="mt-2">
         <label for="procedures">Procedure :</label>
         <textarea id="procedures" name="procedures"></textarea>
     </div>
+    @endcan
 
     <div class="mt-2">
         <label for="medications">Medication :</label>
